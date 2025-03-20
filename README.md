@@ -1,61 +1,45 @@
-#  Refatoração, UML, Herança e Recursos de Áudio
+# Jogo de Texto em Movimento
 
-## Descrição Geral
-Você deverá partir do projeto existente, que mostra um texto se movimentando pela tela no estilo “DVD” (batendo nas bordas). O objetivo é refatorar o código para torná-lo mais organizado (clean code), adicionar novos comportamentos de movimento (herança e subclasses) e incorporar recursos de áudio (sons e música), além de criar diagramas UML que descrevam tanto o projeto atual quanto a versão final após as melhorias.
+## Descrição
+Este projeto simula um texto se movendo pela tela no estilo "DVD", quicando nas bordas e mudando de cor ao colidir. Além disso, inclui recursos de áudio, como efeitos sonoros e música de fundo, e foi estruturado seguindo os princípios de Clean Code e SOLID.
 
+## Funcionalidades
+- Texto animado que quica nas bordas.
+- Movimentos específicos (horizontal, vertical e aleatório).
+- Mudança de cor ao colidir.
+- Reprodução de efeitos sonoros.
+- Música de fundo com controles para troca e pausa.
 
-## Itens a Desenvolver
-#### Diagrama UML
+## Estrutura do Código
 
-- Crie um diagrama UML que represente a estrutura atual do projeto (antes da refatoração).
-Em seguida, crie um segundo diagrama UML que mostre a nova estrutura após as alterações sugeridas (depois da refatoração).
-Os diagramas devem evidenciar as classes, os principais atributos e métodos, bem como as relações de herança (ou de uso).
+### Principais Arquivos
+- `game.py` - Gerencia a lógica principal do jogo.
+- `MoveTexto.py` - Superclasse responsável pelo movimento do texto.
+- `DVDQuicante.py` - Texto que quica e muda de cor.
+- `DVDHorizontal.py` - Texto que se move apenas na horizontal.
+- `DVDVertical.py` - Texto que se move apenas na vertical.
+- `dvd.py` - Classe base que apenas chama a atualização do movimento.
+- `audio_manager.py` - Gerencia os sons e a música do jogo.
+- `config.py` - Configurações globais do jogo.
 
+## Diagrama UML
+O projeto conta com um diagrama UML que representa a estrutura das classes, evidenciando a relação de herança entre `MoveTexto` e suas subclasses (`DVDQuicante`, `DVDHorizontal`, `DVDVertical`).
 
-#### Refatorar o Código para “Clean Code”
+## Princípios Aplicados
+- **Clean Code**: Código modular, bem organizado e com nomes descritivos.
+- **SOLID**: Uso da herança para reuso de código e separação de responsabilidades.
 
-- Retirar a função _non_zero() ou encontrar outra forma de gerar velocidades iniciais para o texto, evitando overhead ou repetições desnecessárias.
+## Como Executar
+1. Certifique-se de ter o Python e a biblioteca `pygame` instalados:
+   ```sh
+   pip install pygame
+   ```
+2. Execute o jogo com:
+   ```sh
+   python game.py
+   ```
 
-- Eliminar “números mágicos” (valores fixos no meio do código) e movê-los para constantes ou para o arquivo config.py.
-  
-- Padronizar nomes de variáveis e métodos para que sejam mais expressivos (caso necessário).
-  
-- Separar responsabilidades em módulos ou classes distintas (cores, configuração, lógica de jogo, lógica de movimento, etc.) [Caso necessário].
-
-### Criar uma Superclasse MoveTexto
-
-- Essa classe deve conter os atributos e comportamentos básicos para renderizar e desenhar texto na tela, além de armazenar posição e dimensões.
-
-- Deve possuir um método update() (abstrato ou genérico) que será sobrescrito pelas subclasses.
-
-### Criar Três Subclasses que Herdam de MoveTexto
-
-- Classe de texto que “quica”: implementa colisão com as bordas e muda de cor.
-  
-- Classe de texto que se move apenas na vertical: implementa colisão com as bordas e muda de cor.
-  
-- Classe de texto que se move apenas na horizontal (pode ser semelhante ao comportamento atual do projeto) [refatorar para ser uma subclasse].
-  
-
-### Adicionar Sons e Música
-
-- Incluir efeito sonoro ao bater na borda.
-  
-- Adicionar música de fundo que deve tocar em loop.
-  
-- Permitir que o usuário troque de música ao apertar a tecla S, pausar com SPACE e start com a mesma tecla. (Isso pode significar tocar um outro arquivo de música ou pausar e retomar a música, dependendo da escolha)
-
-### Docstrings
-
-- Incluir docstrings em todas as classes e em seus métodos principais, explicando resumidamente o propósito de cada um.
-  
-- Usar docstrings no formato Python (três aspas """), descrevendo parâmetros e retornos de cada método, caso aplicável.
-
-Documentar no README os diagramas UML e o código - evidenciando o SOLID e Clean Code.
-  
- 
-
-
-
-# trabalhoRafael
-# trabalhoRafael
+## Controles
+- `S` - Troca a música.
+- `SPACE` - Pausa ou retoma a música.
+- `Fechar a janela` - Encerra o jogo.

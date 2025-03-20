@@ -1,0 +1,67 @@
+@startuml
+class MoveTexto {
+    + texto: str
+    + fonte: str
+    + tamanho: int
+    + cor: tuple
+    + x: int
+    + y: int
+    + screen_width: int
+    + screen_height: int
+    + speed_x: int
+    + speed_y: int
+    + audio_manager: AudioManager
+    + update()
+    + draw(screen: pygame.Surface)
+    + quicar_nas_bordas()
+}
+
+class DVDQuicante {
+    + last_direction_change: float
+    + _change_direction()
+}
+
+class DVDHorizontal {
+    + update()
+}
+
+class DVDVertical {
+    + update()
+}
+
+class DVD {
+    + update()
+}
+
+MoveTexto <|-- DVDQuicante
+MoveTexto <|-- DVDHorizontal
+MoveTexto <|-- DVDVertical
+MoveTexto <|-- DVD
+
+class AudioManager {
+    + sounds: dict
+    + music_files: list
+    + current_music_index: int
+    + music_playing: bool
+    + play_music()
+    + stop_music()
+    + play_sound(sound_name: str)
+    + toggle_music()
+    + next_music()
+}
+
+class Game {
+    + screen: pygame.Surface
+    + clock: pygame.time.Clock
+    + running: bool
+    + audio_manager: AudioManager
+    + text: MoveTexto
+    + run()
+    + events()
+    + update()
+    + draw()
+}
+
+Game --> AudioManager
+Game --> MoveTexto
+@enduml
