@@ -43,3 +43,6 @@ O projeto conta com um diagrama UML que representa a estrutura das classes, evid
 - `S` - Troca a música.
 - `SPACE` - Pausa ou retoma a música.
 - `Fechar a janela` - Encerra o jogo.
+
+## UML 
+![alt text](UML.png)
